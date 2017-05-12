@@ -1,12 +1,14 @@
+
 import sys
 import struct
-import inspect
+
+import logging
+from funcsigs import signature
 import uuid
 import os
 import distutils
 import deepmerge
 
-from PyInstaller import log
 from PyInstaller.building.makespec import main as makespec_main
 from contextlib import contextmanager
 from distutils.debug import DEBUG
@@ -28,11 +30,10 @@ else:
         else:
             return glob.iglob(path)
 
-
 if DEBUG:
-    log.logger.setLevel('DEBUG')
+    logging.getLogger('PyInstaller').setLevel('DEBUG')
 else:
-    log.logger.setLevel('ERROR')
+    logging.getLogger('PyInstaller').setLevel('ERROR')
 
 entry_keys = [
     'console_scripts',
@@ -64,7 +65,7 @@ def merge_defaults(a, b):
 
 def makespec_args():
     names = ['datas']  # signature does not detect datas for some reason
-    for name, parameter in inspect.signature(makespec_main).parameters.items():
+    for name, parameter in signature(makespec_main).parameters.items():
         if name not in (excluded_args + ['args', 'kwargs']):
             names.append(name)
 

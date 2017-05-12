@@ -70,5 +70,4 @@ def setup(**attrs):
             str(entry_point)
             for entry_point in attrs['entry_points'][entry_key]
         ]
-
     distutils_setup(**attrs)
