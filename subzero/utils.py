@@ -3,6 +3,8 @@ import sys
 import struct
 
 import logging
+
+import errno
 from funcsigs import signature
 import uuid
 import os
@@ -119,6 +121,18 @@ def generate_guid():
     """
     return str(uuid.uuid1()).upper()
 
+def makedirs(directory):
+    """
+    Does nothing if the directory existst or tries to create it.
+    Function is needed for py2 compatibility.
+    """
+    try:
+        os.makedirs(directory)  # exist_ok not available in py2, so we just catch the exception
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(directory):
+            pass
+        else:
+            raise
 
 @contextmanager
 def enter_directory(path):

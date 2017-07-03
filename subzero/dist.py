@@ -6,7 +6,6 @@ import ntpath
 import os
 import pkgutil
 
-import errno
 import pkg_resources
 import shutil
 import subprocess
@@ -22,7 +21,7 @@ from pkg_resources import EntryPoint, Requirement
 from pyspin.spin import make_spin, Spin1
 from copy import copy
 
-from .utils import suppress, makespec_args, decode, is_binary, rename_script, build_dir, entry_keys, move_tree
+from .utils import suppress, makespec_args, decode, is_binary, rename_script, build_dir, entry_keys, move_tree, makedirs
 
 
 class build_exe(distutils.command.build.build):
@@ -73,13 +72,7 @@ class build_exe(distutils.command.build.build):
 
         for required_directory in [distpath, self.build_exe, workpath]:
             shutil.rmtree(required_directory, ignore_errors=True)
-            try:
-                os.makedirs(required_directory) # exist_ok not available in py2, so we just catch the exception
-            except OSError as exc:
-                if exc.errno == errno.EEXIST and os.path.isdir(required_directory):
-                    pass
-                else:
-                    raise
+            makedirs(required_directory)
 
         for entry_point in entry_points.values():
             scripts.append(self._generate_script(entry_point, workpath))

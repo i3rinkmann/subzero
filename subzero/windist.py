@@ -6,12 +6,11 @@ import os
 import shutil
 import json
 
-import errno
 import go_msi
 import re
 import io
 
-from .utils import build_dir, enter_directory, generate_guid, get_arch
+from .utils import build_dir, enter_directory, generate_guid, get_arch, makedirs
 from .rtf import write_rtf
 from pyspin.spin import make_spin, Spin1
 from distutils.command.bdist_msi import bdist_msi as d_bdist_msi
@@ -202,13 +201,7 @@ class bdist_msi(d_bdist_msi):
         except OSError:
             pass
 
-        try:
-            os.makedirs(self.build_temp)  # exist_ok not available in py2, so we just catch the exception
-        except OSError as exc:
-            if exc.errno == errno.EEXIST and os.path.isdir(self.build_temp):
-                pass
-            else:
-                raise
+        makedirs(self.build_temp)
 
         # Resolve all directory names here
         # build_temp = os.path.abspath(self.build_temp)
