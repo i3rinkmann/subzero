@@ -90,7 +90,7 @@ class bdist_msi(d_bdist_msi):
         # TODO: Parse other types of license files
         for file in ['LICENSE', 'LICENSE.txt']:
             if os.path.isfile(file):
-                self.license_text = open(file).read()
+                self.license_text = io.open(file).read()
                 break
         else:
             self.license_text = ''

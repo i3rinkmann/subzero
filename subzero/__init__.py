@@ -23,7 +23,7 @@ def install_requirements(requirements):
     if not requirements:
         return
 
-    command = [sys.executable, '-m', 'pip', 'install', '--user'] + requirements
+    command = [sys.executable, '-m', 'pip', 'install'] + requirements
     try:
         subprocess.check_output(command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:

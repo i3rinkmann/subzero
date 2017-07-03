@@ -13,7 +13,7 @@ from subprocess import CalledProcessError
 import PyInstaller.__main__
 from PyInstaller.building.makespec import main as makespec_main
 from PyInstaller.utils.hooks import collect_submodules, get_module_file_attribute
-from PyInstaller import log
+import logging
 from packaging import version
 from pkg_resources import EntryPoint, Requirement
 from pyspin.spin import make_spin, Spin1
@@ -21,6 +21,7 @@ from copy import copy
 
 from .utils import suppress, makespec_args, decode, is_binary, rename_script, build_dir, entry_keys, move_tree
 
+logger = logging.getLogger('PyInstaller')
 
 class build_exe(distutils.core.Command):
     description = "build executables from Python scripts"
@@ -218,7 +219,7 @@ class build_exe(distutils.core.Command):
             try:
                 options['hiddenimports'].append(module_files[required_file])
             except KeyError:
-                log.logger.debug(
+                logger.debug(
                     'Unable to collect module for {}'.format(required_file))
 
         for required_file in required_binary_files:

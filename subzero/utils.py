@@ -5,8 +5,8 @@ import uuid
 import os
 import distutils
 import deepmerge
+import logging
 
-from PyInstaller import log
 from PyInstaller.building.makespec import main as makespec_main
 from contextlib import contextmanager
 from distutils.debug import DEBUG
@@ -28,11 +28,11 @@ else:
         else:
             return glob.iglob(path)
 
-
+logger = logging.getLogger('PyInstaller')
 if DEBUG:
-    log.logger.setLevel('DEBUG')
+    logger.setLevel('DEBUG')
 else:
-    log.logger.setLevel('ERROR')
+    logger.setLevel('ERROR')
 
 entry_keys = [
     'console_scripts',
