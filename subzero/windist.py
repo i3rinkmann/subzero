@@ -178,12 +178,17 @@ class bdist_msi(d_bdist_msi):
         with enter_directory(self.bdist_dir):
             try:
                 if self.wix_template_dir:
-                    go_msi.make(msi=msi, arch=arch, src=self.wix_template_dir)
+                    p = subprocess.Popen(['C:\\Program Files\\go-msi\\go-msi.exe', 'make' , '--src', self.wix_template_dir , '--msi', msi, '--arch', arch], stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE)
+
+                    # go_msi.make(msi=msi, arch=arch, src=self.wix_template_dir)
                 else:
                     go_msi.make(msi=msi, arch=arch)
+                stdout, stderr = p.communicate()
+                log.logger.exception(stdout)
+                log.logger.exception(stderr)
             except CalledProcessError as e:
                 log.logger.exception('go-msi failed: ' + str(e))
-                log.logger.exception("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
 
 
         shutil.move(
