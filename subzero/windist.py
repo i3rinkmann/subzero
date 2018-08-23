@@ -188,7 +188,7 @@ class bdist_msi(d_bdist_msi):
                 stdout, stderr = p.communicate()
                 log.logger.exception(stdout)
                 log.logger.exception(stderr)
-            except CalledProcessError as e:
+            except Exception as e:
                 log.logger.exception('go-msi failed: ' + str(e))
 
 
