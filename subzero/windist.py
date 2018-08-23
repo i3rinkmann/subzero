@@ -181,8 +181,8 @@ class bdist_msi(d_bdist_msi):
                     go_msi.make(msi=msi, arch=arch, src=self.wix_template_dir)
                 else:
                     go_msi.make(msi=msi, arch=arch)
-            except CalledProcessError:
-                log.logger.exception('go-msi failed')
+            except CalledProcessError, e:
+                log.logger.exception('go-msi failed: ' + str(e))
 
         shutil.move(
             os.path.join(self.bdist_dir, msi), os.path.join(
