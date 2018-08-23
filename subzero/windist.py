@@ -10,6 +10,7 @@ import errno
 import go_msi
 import re
 import io
+import subprocess
 
 from .utils import build_dir, enter_directory, generate_guid, get_arch
 from .rtf import write_rtf
