@@ -183,6 +183,8 @@ class bdist_msi(d_bdist_msi):
                     go_msi.make(msi=msi, arch=arch)
             except CalledProcessError as e:
                 log.logger.exception('go-msi failed: ' + str(e))
+                log.logger.exception("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+
 
         shutil.move(
             os.path.join(self.bdist_dir, msi), os.path.join(
