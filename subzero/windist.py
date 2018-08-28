@@ -19,6 +19,8 @@ from distutils.command.bdist_msi import bdist_msi as d_bdist_msi
 from PyInstaller import log
 from subprocess import CalledProcessError
 
+import getpass
+
 
 class bdist_msi(d_bdist_msi):
     user_options = distutils.command.bdist_msi.bdist_msi.user_options + [
@@ -176,6 +178,7 @@ class bdist_msi(d_bdist_msi):
         else:
             arch = '386'
 
+        print(getpass.getuser())
         with enter_directory(self.bdist_dir):
             try:
                 if self.wix_template_dir:
