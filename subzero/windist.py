@@ -177,6 +177,9 @@ class bdist_msi(d_bdist_msi):
             arch = 'amd64'
         else:
             arch = '386'
+        print("self.bdist_dir: {}".format(self.bdist_dir))
+        print("msi: {}".format(msi))
+        print("self.wix_template_dir: {}".format(self.wix_template_dir))
 
         with enter_directory(self.bdist_dir):
             try:
@@ -188,8 +191,8 @@ class bdist_msi(d_bdist_msi):
                 else:
                     go_msi.make(msi=msi, arch=arch)
                 stdout, stderr = p.communicate()
-                log.logger.exception(f"stdout: {stdout}")
-                log.logger.exception(f"stderr: {stderr}")
+                log.logger.exception("stdout: {}".format(stdout))
+                log.logger.exception("stderr: {}".format(stderr))
             except Exception as e:
                 log.logger.exception('go-msi failed: ' + str(e))
 
