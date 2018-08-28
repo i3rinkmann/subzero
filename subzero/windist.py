@@ -180,10 +180,11 @@ class bdist_msi(d_bdist_msi):
         print("self.bdist_dir: {}".format(self.bdist_dir))
         print("msi: {}".format(msi))
         print("self.wix_template_dir: {}".format(self.wix_template_dir))
-        print("Permission F_OK: {}".format(os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.F_OK)))
-        print("Permission R_OK: {}".format(os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.R_OK)))
-        print("Permission W_OK: {}".format(os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.W_OK)))
-        print("Permission X_OK: {}".format(os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.X_OK)))
+        print("User: {}".format(getpass.getuser()))
+        print("Permission for {} F_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, .os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.F_OK)))
+        print("Permission for {} R_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.R_OK)))
+        print("Permission for {} W_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.W_OK)))
+        print("Permission for {} X_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\"+msi, os.X_OK)))
         with enter_directory(self.bdist_dir):
             try:
                 if self.wix_template_dir:
