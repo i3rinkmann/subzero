@@ -177,34 +177,34 @@ class bdist_msi(d_bdist_msi):
             arch = 'amd64'
         else:
             arch = '386'
-        print("self.bdist_dir: {}".format(self.bdist_dir))
-        print("msi: {}".format(msi))
-        print("self.wix_template_dir: {}".format(self.wix_template_dir))
-        print("User: {}".format(getpass.getuser()))
-        print("Permission for {} F_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.F_OK)))
-        print("Permission for {} F_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.F_OK)))
-        print("Permission for {} F_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.F_OK)))
-        print("Permission for {} R_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.R_OK)))
-        print("Permission for {} R_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.R_OK)))
-        print("Permission for {} R_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.R_OK)))
-        print("Permission for {} W_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.W_OK)))
-        print("Permission for {} W_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.W_OK)))
-        print("Permission for {} W_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.W_OK)))
-        print("Permission for {} X_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.X_OK)))
-        print("Permission for {} X_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.X_OK)))
-        print("Permission for {} X_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.X_OK)))
+        # print("self.bdist_dir: {}".format(self.bdist_dir))
+        # print("msi: {}".format(msi))
+        # print("self.wix_template_dir: {}".format(self.wix_template_dir))
+        # print("User: {}".format(getpass.getuser()))
+        # print("Permission for {} F_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.F_OK)))
+        # print("Permission for {} F_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.F_OK)))
+        # print("Permission for {} F_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.F_OK)))
+        # print("Permission for {} R_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.R_OK)))
+        # print("Permission for {} R_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.R_OK)))
+        # print("Permission for {} R_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.R_OK)))
+        # print("Permission for {} W_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.W_OK)))
+        # print("Permission for {} W_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.W_OK)))
+        # print("Permission for {} W_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.W_OK)))
+        # print("Permission for {} X_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build\\exe.win32-3.4", os.X_OK)))
+        # print("Permission for {} X_OK: {}".format("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.access("C:\\gitlab-runner\\builds\\e83b0a50\\0\\basislager-developer\\datev\\build", os.X_OK)))
+        # print("Permission for {} X_OK: {}".format("C:\\gitlab-runner", os.access("C:\\gitlab-runner", os.X_OK)))
         with enter_directory(self.bdist_dir):
             try:
                 if self.wix_template_dir:
-                    p = subprocess.Popen(['C:\\Program Files\\go-msi\\go-msi.exe', 'make' , '--src', self.wix_template_dir , '--msi', msi, '--arch', arch], stdout=subprocess.PIPE,
-                                     stderr=subprocess.PIPE)
+                    # p = subprocess.Popen(['C:\\Program Files\\go-msi\\go-msi.exe', 'make' , '--src', self.wix_template_dir , '--msi', msi, '--arch', arch], stdout=subprocess.PIPE,
+                                    #  stderr=subprocess.PIPE)
 
-                    # go_msi.make(msi=msi, arch=arch, src=self.wix_template_dir)
+                    go_msi.make(msi=msi, arch=arch, src=self.wix_template_dir)
                 else:
                     go_msi.make(msi=msi, arch=arch)
-                stdout, stderr = p.communicate()
-                log.logger.exception(stdout)
-                log.logger.exception(stderr)
+                # stdout, stderr = p.communicate()
+                # log.logger.exception(stdout)
+                # log.logger.exception(stderr)
             except Exception as e:
                 log.logger.exception('go-msi failed: ' + str(e))
 
