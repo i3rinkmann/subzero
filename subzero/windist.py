@@ -178,7 +178,6 @@ class bdist_msi(d_bdist_msi):
         else:
             arch = '386'
 
-        print(getpass.getuser())
         with enter_directory(self.bdist_dir):
             try:
                 if self.wix_template_dir:
@@ -189,8 +188,8 @@ class bdist_msi(d_bdist_msi):
                 else:
                     go_msi.make(msi=msi, arch=arch)
                 stdout, stderr = p.communicate()
-                log.logger.exception(stdout)
-                log.logger.exception(stderr)
+                log.logger.exception(f"stdout: {stdout}")
+                log.logger.exception(f"stderr: {stderr}")
             except Exception as e:
                 log.logger.exception('go-msi failed: ' + str(e))
 
