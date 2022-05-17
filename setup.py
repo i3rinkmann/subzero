@@ -29,8 +29,9 @@ setup(
         'contextlib2;python_version<"3.4"',
     ],
     setup_requires=[
-        'setuptools-markdown',
         'setuptools_scm',
     ],
     use_scm_version=True,
-    long_description_markdown_filename='README.md')
+    long_description_markdown_filename='README.md',
+    long_description_content_type="text/markdown"
+)
