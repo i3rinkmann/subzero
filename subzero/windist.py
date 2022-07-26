@@ -1,4 +1,6 @@
-from __future__ import division, print_function, absolute_import, unicode_literals
+import sys
+if sys.version_info[0] < 3:
+    from __future__ import division, print_function, absolute_import, unicode_literals
 
 import distutils.errors
 import distutils.util
